@@ -1,16 +1,17 @@
-local autocmd = vim.api.nvim_create_autocmd
 local keymap = vim.keymap
 
-local function find_in_node(node)
+local function find_in_node()
+  local s_api, api = pcall(require, 'nvim-tree.api')
   local s_telescope, telescope = pcall(require, 'telescope.builtin')
-  local s_theme, theme = pcall(require, 'telescope.themes')
-  if not (s_telescope or s_theme) then return end
+  if not (s_api or s_telescope) then return end
+
+  local node = api.tree.get_node_under_cursor()
 
   if node.type == 'directory' then
-    telescope.live_grep(theme.get_dropdown({
+    telescope.live_grep({
       cwd = node.absolute_path,
       prompt_title = "Find string in " .. node.name .. "/*",
-    }))
+    })
   else
     vim.notify("Not a directory")
   end

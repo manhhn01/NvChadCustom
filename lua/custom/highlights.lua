@@ -22,22 +22,31 @@ M.add = {
   IndentBlanklineIndent5 = { fg = '#334654' },
   IndentBlanklineIndent6 = { fg = '#433B4E' },
 
+  -- Fold
+  FoldColumn = { fg = "#525a60", bg = "NONE" },
+
   -- Diagnostic
   DiagnosticUnderlineError = {
     undercurl = true,
+    sp = "red"
   },
   DiagnosticUnderlineWarn = {
     undercurl = true,
-  },
-  DiagnosticUnderlineInfor = {
-    undercurl = true,
+    sp="yellow"
   },
   DiagnosticUnderlineInfo = {
     undercurl = true,
+    sp = "nord_blue"
   },
   DiagnosticUnderlineHint = {
     undercurl = true,
+    sp = "purple"
   },
+
+  -- Float
+  FloatBorder = {
+    bg = "NONE"
+  }
 }
 
 return M

@@ -1,6 +1,57 @@
 ---@type MappingsTable
 local M = {}
 
+M.general = {
+  i = {
+    ["<c-a>"] = {"ggVG", "Select all", opts = { silent = true }}
+  },
+
+  n = {
+    ["<c-a>"] = {"ggVG", "Select all", opts = { silent = true }},
+    ["<Leader>q"] = {
+      function()
+        require("nvchad_ui.tabufline").close_buffer()
+      end,
+      "Close buffer",
+    },
+    ["<leader>n"] = { require('custom.utils').set_workspace_name, "Set workspace name"},
+    ["<leader><space>"] = {":noh<CR>", "No Highlight"},
+    ["ss"] = {":split<CR>", "Split horizontal", opts = { silent = true }},
+    ["sv"] = {":vsplit<CR>", "Split vertical", opts = { silent = true }},
+    ["sh"] = {"<C-w>h", "Go to left window", opts = { silent = true }},
+    ['sk'] = {"<C-w>k", "Go to top window", opts = { silent = true }},
+    ['sj'] = {"<C-w>j", "Go to right window", opts = { silent = true }},
+    ['sl'] = {"<C-w>l", "Go to bottom window", opts = { silent = true }},
+    ['sH'] = {"<C-w>H", "Move window to left", opts = { silent = true }},
+    ['sK'] = {"<C-w>K", "Move window to top", opts = { silent = true }},
+    ['sJ'] = {"<C-w>J", "Move window to right", opts = { silent = true }},
+    ['sL'] = {"<C-w>L", "Move window to bottom", opts = { silent = true }},
+    ["gi"] = {"gi", "Insert to last edit", opts = { silent = true }}
+  },
+
+  t = {
+    ["<C-[>"] = { vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), "Escape terminal mode" },
+  },
+
+}
+
+M.nvimtree = {
+  n = {
+    ["se"] = { ":NvimTreeToggle <CR>", "Toggle nvimtree" },
+  }
+}
+
+M.tabufline = {
+  n = {
+    ["<leader>q"] = {
+      function()
+        require("nvchad_ui.tabufline").close_buffer()
+      end,
+      "Close buffer",
+    },
+  }
+}
+
 local camelcasemotion_mappings = {
   ["w"] = { "<Plug>CamelCaseMotion_w", "Next word" },
   ["b"] = { "<Plug>CamelCaseMotion_b", "Previous word" }
@@ -60,40 +111,6 @@ local hop_mappings = {
   },
 }
 
-M.general = {
-  n = {
-    ["<leader>n"] = { require('custom.utils').set_workspace_name, "Set workspace name"},
-    ["<leader><space>"] = {":noh<CR>", "No Highlight"},
-    ["ss"] = {":split<CR>", "Split horizontal", opts = { silent = true }},
-    ["sv"] = {":vsplit<CR>", "Split vertical", opts = { silent = true }},
-    ['sh'] = {"<C-w>h", "Go to left window", opts = { silent = true }},
-    ['sk'] = {"<C-w>k", "Go to top window", opts = { silent = true }},
-    ['sj'] = {"<C-w>j", "Go to right window", opts = { silent = true }},
-    ['sl'] = {"<C-w>l", "Go to bottom window", opts = { silent = true }},
-    ['sH'] = {"<C-w>H", "Move window to left", opts = { silent = true }},
-    ['sK'] = {"<C-w>K", "Move window to top", opts = { silent = true }},
-    ['sJ'] = {"<C-w>J", "Move window to right", opts = { silent = true }},
-    ['sL'] = {"<C-w>L", "Move window to bottom", opts = { silent = true }},
-  }
-}
-
-M.nvimtree = {
-  n = {
-    ["se"] = { ":NvimTreeToggle <CR>", "Toggle nvimtree" },
-  }
-}
-
-M.tabufline = {
-  n = {
-    ["<leader>x"] = {
-      function()
-        require("nvchad_ui.tabufline").close_buffer()
-      end,
-      "Close buffer",
-    },
-  }
-}
-
 M.hop = {
   n = hop_mappings,
   v = hop_mappings,
@@ -103,6 +120,19 @@ M.hop = {
 M.camelcasemotion = {
   n = camelcasemotion_mappings,
   x = camelcasemotion_mappings,
+}
+
+M.telescope = {
+  n = {
+    ["<leader>gs"] = { ":Telescope git_status <CR>", "Git status" },
+    ["<leader>gt"] = { ":Telescope git_stash <CR>", "Git stash" },
+    -- find
+    ["<leader>ff"] = { ":Telescope find_files layout_strategy=vertical <CR>", "Find files" },
+    ["<leader>fa"] = { ":Telescope find_files follow=true no_ignore=true hidden=true layout_strategy=vertical <CR>", "Find all" },
+    ["<leader>fb"] = { ":Telescope buffers layout_strategy=vertical <CR>", "Find buffers" },
+    ["<leader>fo"] = { ":Telescope oldfiles layout_strategy=vertical <CR>", "Find oldfiles" },
+  },
+
 }
 
 return M
