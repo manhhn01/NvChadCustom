@@ -13,7 +13,6 @@ M.override = {
 
 ---@type HLTable
 M.add = {
-  NvimTreeOpenedFolderName = { fg = "green", bold = true },
   -- IndentBlankline
   IndentBlanklineIndent1 = { fg = '#453941' },
   IndentBlanklineIndent2 = { fg = '#494642' },

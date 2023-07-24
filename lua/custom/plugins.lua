@@ -18,13 +18,18 @@ local plugins = {
   },
 
   {
+    "lewis6991/gitsigns.nvim",
+    opts = require "custom.configs.overrides.gitsigns",
+  },
+
+  {
     "nvim-telescope/telescope.nvim",
-    opts = require "custom.configs.overrides.telescope"
+    opts = require "custom.configs.overrides.telescope",
   },
 
   {
     "NvChad/nvterm",
-    opts = require "custom.configs.overrides.nvterm"
+    opts = require "custom.configs.overrides.nvterm",
   },
 
   {
@@ -34,51 +39,50 @@ local plugins = {
     config = function(_, opts)
       local cmp = require "cmp"
       cmp.setup(opts)
-      cmp.setup.cmdline({ '/', '?' }, {
+      cmp.setup.cmdline({ "/", "?" }, {
         mapping = cmp.mapping.preset.cmdline(),
         sources = {
-          { name = 'buffer' }
+          { name = "buffer" },
         },
         performance = {
-          max_view_entries = 7
-        }
+          max_view_entries = 7,
+        },
       })
 
-      cmp.setup.cmdline(':', {
+      cmp.setup.cmdline(":", {
         mapping = cmp.mapping.preset.cmdline(),
-        sources = cmp.config.sources({{ name = 'path' }, { name = 'cmdline', }}),
+        sources = cmp.config.sources { { name = "path" }, { name = "cmdline" } },
         formatting = {
           fields = { "abbr" },
         },
         performance = {
-          max_view_entries = 7
-        }
+          max_view_entries = 7,
+        },
       })
     end,
     dependencies = {
       "hrsh7th/cmp-cmdline",
-    }
+    },
   },
 
   {
     "rcarriga/nvim-notify",
     opts = require "custom.configs.notify",
     lazy = false,
-    config = function (_, opts)
-      vim.notify = require("notify")
+    config = function(_, opts)
+      vim.notify = require "notify"
       vim.notify.setup(opts)
-    end
-
+    end,
   },
 
   {
     "williamboman/mason.nvim",
-    opts = require "custom.configs.overrides.mason"
+    opts = require "custom.configs.overrides.mason",
   },
 
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = require "custom.configs.overrides.treesitter"
+    opts = require "custom.configs.overrides.treesitter",
   },
 
   {
@@ -89,7 +93,7 @@ local plugins = {
 
   {
     "lukas-reineke/indent-blankline.nvim",
-    opts = require "custom.configs.overrides.indent-blankline"
+    opts = require "custom.configs.overrides.indent-blankline",
   },
 
   {
@@ -101,10 +105,10 @@ local plugins = {
     "phaazon/hop.nvim",
     lazy = false,
     config = function()
-      require('hop').setup {
-        teasing = false
+      require("hop").setup {
+        teasing = false,
       }
-    end
+    end,
   },
 
   {
@@ -123,22 +127,22 @@ local plugins = {
     opts = require "custom.configs.hlslens",
     config = function(_, opts)
       require("hlslens").setup(opts)
-    end
+    end,
   },
 
   {
     "dstein64/nvim-scrollview",
     event = "BufReadPost",
-    opts = require "custom.configs.scrollview"
+    opts = require "custom.configs.scrollview",
   },
 
   {
     "stevearc/dressing.nvim",
     lazy = false,
     opts = require "custom.configs.dressing",
-    config = function (_, opts)
+    config = function(_, opts)
       require("dressing").setup(opts)
-    end
+    end,
   },
 
   {
@@ -146,7 +150,7 @@ local plugins = {
     event = "BufReadPost",
     init = function()
       local opt = vim.opt
-      opt.foldcolumn = '1' -- '0' is not bad
+      opt.foldcolumn = "1" -- '0' is not bad
       opt.fillchars:append "eob: "
       opt.fillchars:append "fold: "
       opt.fillchars:append "foldopen:"
@@ -161,19 +165,19 @@ local plugins = {
       {
         "luukvbaal/statuscol.nvim",
         config = function()
-          local builtin = require("statuscol.builtin")
-          require("statuscol").setup({
+          local builtin = require "statuscol.builtin"
+          require("statuscol").setup {
             relculright = true,
             segments = {
               { text = { builtin.foldfunc }, click = "v:lua.ScFa" },
               { text = { "%s" }, click = "v:lua.ScSa" },
               { text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
             },
-          })
+          }
         end,
       },
     },
-    opts = require "custom.configs.vim-ufo"
+    opts = require "custom.configs.vim-ufo",
   },
 
   {
@@ -188,12 +192,28 @@ local plugins = {
       return opts
     end,
     dependencies = {
-      "JoosepAlviste/nvim-ts-context-commentstring"
-    }
+      "JoosepAlviste/nvim-ts-context-commentstring",
+    },
   },
 
   {
-    "abecodes/tabout.nvim"
+    "abecodes/tabout.nvim",
+  },
+
+  {
+    "Exafunction/codeium.vim",
+    init = function()
+      vim.g.codeium_disable_bindings = 1
+      vim.g.codeium_filetypes = {
+        TelescopePrompt = false
+      }
+    end,
+    event = "BufReadPost",
+  },
+
+  {
+    "tpope/vim-fugitive",
+    cmd = { "Git", "G" },
   }
 
   -- To make a plugin not be loaded
