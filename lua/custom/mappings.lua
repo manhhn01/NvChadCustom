@@ -7,7 +7,14 @@ M.general = {
   },
 
   n = {
-    ["<c-a>"] = { "ggVG", "Select all", opts = { silent = true } },
+    ["<C-t>"] = { ":tabedit<CR>", "New tab", opts = { silent = true } },
+
+    ["<C-h>"] = { "<C-w><", "Resize left", opts={ silent = true } },
+    ["<C-l>"] = { "<C-w>>", "Resize right", opts={ silent = true } },
+    ["<C-k>"] = { "<C-w>+", "Resize up", opts={ silent = true } },
+    ["<C-j>"] = { "<C-w>-", "Resize down", opts={ silent = true } },
+
+    ["<C-a>"] = { "ggVG", "Select all", opts = { silent = true } },
     ["<Leader>q"] = {
       function()
         require("nvchad_ui.tabufline").close_buffer()
@@ -34,6 +41,10 @@ M.general = {
       end,
       "LSP formatting",
     },
+  },
+
+  x = {
+    ["y"] = { "ygv<Esc>", "Preseve yank cursor position", opts = { silent = true } },
   },
 
   t = {
@@ -225,6 +236,12 @@ M.lspconfig = {
         vim.lsp.buf.code_action()
       end,
       "LSP code action",
+    },
+    ["L"] = {
+      function()
+        vim.diagnostic.open_float { border = "rounded" }
+      end,
+      "Floating diagnostic",
     },
   },
 }

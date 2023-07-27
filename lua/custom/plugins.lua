@@ -113,7 +113,7 @@ local plugins = {
 
   {
     "bkad/CamelCaseMotion",
-    lazy = false,
+    event = "BufReadPost",
   },
 
   {
@@ -198,6 +198,11 @@ local plugins = {
 
   {
     "abecodes/tabout.nvim",
+    event = "BufReadPost",
+    opts = require "custom.configs.tabout",
+    config = function(_, opts)
+      require("tabout").setup(opts)
+    end,
   },
 
   {
@@ -205,7 +210,7 @@ local plugins = {
     init = function()
       vim.g.codeium_disable_bindings = 1
       vim.g.codeium_filetypes = {
-        TelescopePrompt = false
+        TelescopePrompt = false,
       }
     end,
     event = "BufReadPost",
@@ -214,6 +219,22 @@ local plugins = {
   {
     "tpope/vim-fugitive",
     cmd = { "Git", "G" },
+  },
+
+  {
+    "windwp/nvim-ts-autotag",
+    event = "BufReadPost",
+  },
+
+  {
+    "utilyre/barbecue.nvim",
+    event = "BufReadPost",
+    config = function()
+      require('barbecue').setup {}
+    end,
+    dependencies = {
+      "SmiteshP/nvim-navic"
+    }
   }
 
   -- To make a plugin not be loaded

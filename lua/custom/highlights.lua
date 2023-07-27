@@ -13,13 +13,15 @@ M.override = {
 
 ---@type HLTable
 M.add = {
+  -- Cmp doc border
+  CmpDocBorder = { fg = "#545c62", bg = "#272f35" },
   -- IndentBlankline
-  IndentBlanklineIndent1 = { fg = '#453941' },
-  IndentBlanklineIndent2 = { fg = '#494642' },
-  IndentBlanklineIndent3 = { fg = '#3E4A42' },
-  IndentBlanklineIndent4 = { fg = '#3F4050' },
-  IndentBlanklineIndent5 = { fg = '#334654' },
-  IndentBlanklineIndent6 = { fg = '#433B4E' },
+  IndentBlanklineIndent1 = { fg = "#453941" },
+  IndentBlanklineIndent2 = { fg = "#494642" },
+  IndentBlanklineIndent3 = { fg = "#3E4A42" },
+  IndentBlanklineIndent4 = { fg = "#3F4050" },
+  IndentBlanklineIndent5 = { fg = "#334654" },
+  IndentBlanklineIndent6 = { fg = "#433B4E" },
 
   -- Fold
   FoldColumn = { fg = "#525a60", bg = "NONE" },
@@ -27,25 +29,25 @@ M.add = {
   -- Diagnostic
   DiagnosticUnderlineError = {
     undercurl = true,
-    sp = "red"
+    sp = "red",
   },
   DiagnosticUnderlineWarn = {
     undercurl = true,
-    sp="yellow"
+    sp = "yellow",
   },
   DiagnosticUnderlineInfo = {
     undercurl = true,
-    sp = "nord_blue"
+    sp = "nord_blue",
   },
   DiagnosticUnderlineHint = {
     undercurl = true,
-    sp = "purple"
+    sp = "purple",
   },
 
   -- Float
   FloatBorder = {
-    bg = "NONE"
-  }
+    bg = "NONE",
+  },
 }
 
 return M
