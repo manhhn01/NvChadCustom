@@ -16,6 +16,7 @@ opt.showbreak = "↪"
 opt.list = true
 opt.listchars:append "trail:⋅"
 opt.listchars:append "multispace:⋅"
+opt.fillchars:append { diff = "╱" }
 
 -- custom close tab
 vim.cmd "function! TbTabCloseCustom(a,b,c,d) \n lua require('custom.utils').del_workspace_name(); require('nvchad_ui.tabufline').closeAllBufs('closeTab') \n endfunction"

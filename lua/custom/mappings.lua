@@ -7,6 +7,11 @@ M.general = {
   },
 
   n = {
+    -- vimdiff
+    ["dr"] = { ":diffget RE<CR>", "Diff get remote" },
+    ["db"] = { ":diffget BASE<CR>", "Diff get base" },
+    ["dl"] = { ":diffget LOCAL<CR>", "Diff get local" },
+
     ["x"] = { '"_x', "No yank on cut", opts = { silent = true } },
     ["d"] = { '"_d', "No yank on delete", opts = { silent = true } },
     ["D"] = { '"_D', "No yank on delete", opts = { silent = true } },
@@ -177,7 +182,7 @@ M.gitsigns = {
     ["<space>j"] = {
       function()
         if vim.wo.diff then
-          return "<space>j"
+          return "]c"
         end
         vim.schedule(function()
           require("gitsigns").next_hunk()
@@ -191,7 +196,7 @@ M.gitsigns = {
     ["<space>k"] = {
       function()
         if vim.wo.diff then
-          return "<space>k"
+          return "]c"
         end
         vim.schedule(function()
           require("gitsigns").prev_hunk()
