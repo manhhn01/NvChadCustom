@@ -12,6 +12,10 @@ g.mapleader = ";"
 opt.relativenumber = true
 opt.scrolloff = 5
 opt.shell = "fish"
+opt.showbreak = "↪"
+opt.list = true
+opt.listchars:append "trail:⋅"
+opt.listchars:append "multispace:⋅"
 
 -- custom close tab
 vim.cmd "function! TbTabCloseCustom(a,b,c,d) \n lua require('custom.utils').del_workspace_name(); require('nvchad_ui.tabufline').closeAllBufs('closeTab') \n endfunction"
@@ -51,5 +55,8 @@ vim.api.nvim_create_user_command("Qa", "qa", {})
 vim.api.nvim_create_user_command("QA", "qa", {})
 
 vim.diagnostic.config {
+  float = {
+    source = true,
+  },
   update_in_insert = true,
 }

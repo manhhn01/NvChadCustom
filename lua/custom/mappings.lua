@@ -7,12 +7,20 @@ M.general = {
   },
 
   n = {
+    ["x"] = { '"_x', "No yank on cut", opts = { silent = true } },
+    ["d"] = { '"_d', "No yank on delete", opts = { silent = true } },
+    ["D"] = { '"_D', "No yank on delete", opts = { silent = true } },
+    ["c"] = { '"_c', "No yank on change", opts = { silent = true } },
+    ["C"] = { '"_C', "No yank on change", opts = { silent = true } },
+
+    ["zw"] = { ":set wrap!<CR>", "Wrap toggle", opts = { silent = true } },
+
     ["<C-t>"] = { ":tabedit<CR>", "New tab", opts = { silent = true } },
 
-    ["<C-h>"] = { "<C-w><", "Resize left", opts={ silent = true } },
-    ["<C-l>"] = { "<C-w>>", "Resize right", opts={ silent = true } },
-    ["<C-k>"] = { "<C-w>+", "Resize up", opts={ silent = true } },
-    ["<C-j>"] = { "<C-w>-", "Resize down", opts={ silent = true } },
+    ["<C-h>"] = { "<C-w><", "Resize left", opts = { silent = true } },
+    ["<C-l>"] = { "<C-w>>", "Resize right", opts = { silent = true } },
+    ["<C-k>"] = { "<C-w>+", "Resize up", opts = { silent = true } },
+    ["<C-j>"] = { "<C-w>-", "Resize down", opts = { silent = true } },
 
     ["<C-a>"] = { "ggVG", "Select all", opts = { silent = true } },
     ["<Leader>q"] = {
@@ -149,16 +157,18 @@ M.camelcasemotion = {
 
 M.telescope = {
   n = {
-    ["<leader>gs"] = { ":Telescope git_status <CR>", "Git status" },
-    ["<leader>gt"] = { ":Telescope git_stash <CR>", "Git stash" },
+    ["<leader>gs"] = { ":Telescope git_status <CR>", "Git status", opts = { silent = true } },
+    ["<leader>gt"] = { ":Telescope git_stash <CR>", "Git stash", opts = { silent = true } },
     -- find
-    ["<leader>ff"] = { ":Telescope find_files layout_strategy=vertical <CR>", "Find files" },
+    ["<leader>o"] = { ":Telescope treesitter <CR>", "Find symbols", opts = { silent = true } },
+    ["<leader>ff"] = { ":Telescope find_files layout_strategy=vertical <CR>", "Find files", opts = { silent = true } },
     ["<leader>fa"] = {
       ":Telescope find_files follow=true no_ignore=true hidden=true layout_strategy=vertical <CR>",
       "Find all",
+      opts = { silent = true },
     },
-    ["<leader>fb"] = { ":Telescope buffers layout_strategy=vertical <CR>", "Find buffers" },
-    ["<leader>fo"] = { ":Telescope oldfiles layout_strategy=vertical <CR>", "Find oldfiles" },
+    ["<leader>fb"] = { ":Telescope buffers layout_strategy=vertical <CR>", "Find buffers", opts = { silent = true } },
+    ["<leader>fo"] = { ":Telescope oldfiles layout_strategy=vertical <CR>", "Find oldfiles", opts = { silent = true } },
   },
 }
 
@@ -242,6 +252,15 @@ M.lspconfig = {
         vim.diagnostic.open_float { border = "rounded" }
       end,
       "Floating diagnostic",
+    },
+  },
+}
+
+M.lspsaga = {
+  n = {
+    ["gh"] = {
+      ":Lspsaga finder<CR>",
+      "LSP finder",
     },
   },
 }

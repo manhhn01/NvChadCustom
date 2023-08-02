@@ -27,6 +27,7 @@ return {
     "dbout",
     "nvcheatsheet",
     "nvdash",
+    "mason",
     ""
   },
   use_treesitter = true,

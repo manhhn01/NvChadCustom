@@ -25,11 +25,19 @@ local plugins = {
   {
     "nvim-telescope/telescope.nvim",
     opts = require "custom.configs.overrides.telescope",
+    dependencies = {
+      "nvim-telescope/telescope-symbols.nvim",
+    },
   },
 
   {
     "NvChad/nvterm",
     opts = require "custom.configs.overrides.nvterm",
+  },
+
+  {
+    "folke/which-key.nvim",
+    opts = require "custom.configs.overrides.whichkey",
   },
 
   {
@@ -228,20 +236,33 @@ local plugins = {
 
   {
     "utilyre/barbecue.nvim",
+    enabled = false,
     event = "BufReadPost",
     config = function()
-      require('barbecue').setup {}
+      require("barbecue").setup {}
     end,
     dependencies = {
-      "SmiteshP/nvim-navic"
-    }
-  }
+      "SmiteshP/nvim-navic",
+    },
+  },
 
-  -- To make a plugin not be loaded
-  -- {
-  --   "NvChad/nvim-colorizer.lua",
-  --   enabled = false
-  -- },
+  {
+    "nvimdev/lspsaga.nvim",
+    event = "BufReadPost",
+    cmd = { "Lspsaga" },
+    opts = require "custom.configs.lspsaga",
+    config = function(_, opts)
+      require("lspsaga").setup(opts)
+    end,
+  },
+
+  {
+    "David-Kunz/jester",
+    enabled = false,
+    -- config = function()
+    --   require("jester").setup()
+    -- end,
+  },
 }
 
 return plugins

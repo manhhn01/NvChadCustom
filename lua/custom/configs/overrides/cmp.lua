@@ -18,7 +18,6 @@ return {
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       fallback()
     end),
-    ["<C-<esc>>"] = cmp.mapping.complete(),
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.close(),
   },
