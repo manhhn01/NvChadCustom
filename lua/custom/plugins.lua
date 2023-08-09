@@ -1,3 +1,4 @@
+---@diagnostic disable: different-requires
 ---@type NvPluginSpec[]
 local plugins = {
   {
@@ -261,6 +262,33 @@ local plugins = {
     opts = require "custom.configs.lspsaga",
     config = function(_, opts)
       require("lspsaga").setup(opts)
+    end,
+  },
+
+  {
+    "folke/todo-comments.nvim",
+    event = "BufReadPost",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function(_, opts)
+      require("todo-comments").setup(opts)
+    end,
+  },
+
+  {
+    "folke/trouble.nvim",
+    -- event = "BufReadPost",
+    cmd = { "Trouble" },
+    -- opts = require "custom.configs.trouble",
+    config = function(_, opts)
+      require("trouble").setup(opts)
+    end,
+  },
+
+  {
+    "RRethy/vim-illuminate",
+    event = "BufReadPost",
+    config = function(_, opts)
+      require("illuminate").configure(opts)
     end,
   },
 

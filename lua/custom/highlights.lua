@@ -23,6 +23,11 @@ M.add = {
   IndentBlanklineIndent5 = { fg = "#334654" },
   IndentBlanklineIndent6 = { fg = "#433B4E" },
 
+  -- vim illuminate
+  IlluminatedWordText = { bg = "#363e44" },
+  IlluminatedWordRead = { bg = "#363e44" },
+  IlluminatedWordWrite = { bg = "#363e44" },
+
   -- Fold
   FoldColumn = { fg = "#525a60", bg = "NONE" },
 

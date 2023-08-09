@@ -12,6 +12,8 @@ M.general = {
     ["db"] = { ":diffget BASE<CR>", "Diff get base" },
     ["dl"] = { ":diffget LOCAL<CR>", "Diff get local" },
 
+    ["<C-c>"] = { "<esc>", "Exit insert mode" },
+
     ["x"] = { '"_x', "No yank on cut", opts = { silent = true } },
     ["d"] = { '"_d', "No yank on delete", opts = { silent = true } },
     ["D"] = { '"_D', "No yank on delete", opts = { silent = true } },
@@ -236,7 +238,7 @@ M.codeium = {
     },
     ["<c-e>"] = {
       function()
-        return vim.fn["codeium#Clear"](1)
+        return vim.fn["codeium#Clear"]()
       end,
       "Clear suggestion",
       opts = { expr = true },
