@@ -15,8 +15,6 @@ return {
     -- When true, input will start in insert mode.
     start_in_insert = true,
 
-    -- These are passed to nvim_open_win
-    anchor = 'SW',
     border = 'rounded',
     -- 'editor' and 'win' will default to being centered
     relative = 'cursor',
@@ -65,7 +63,7 @@ return {
     enabled = true,
 
     -- Priority list of preferred vim.select implementations
-    backend = { 'telescope', 'nui', "fzf", "builtin" },
+    backend = { "builtin" },
 
     -- Options for nui Menu
     nui = {
@@ -92,7 +90,7 @@ return {
     -- Options for built-in selector
     builtin = {
       -- These are passed to nvim_open_win
-      anchor = 'NW',
+      -- anchor = 'NW',
       border = 'rounded',
       -- 'editor' and 'win' will default to being centered
       relative = 'cursor',
@@ -132,23 +130,23 @@ return {
     },
 
     --see :help dressing_get_config
-    get_config = function(opts)
-      vim.b.s_index = 0
-      if opts.kind == 'codeaction' then
-        opts.format_item = function (action)
-          vim.b.s_index = vim.b.s_index + 1
-
-          return vim.b.s_index .. '. ' .. action[2].title
-        end
-        return {
-          backend = 'builtin',
-          builtin = {
-            anchor = 'NW',
-            relative = 'cursor',
-            min_height = 1,
-          },
-        }
-      end
-    end
+    -- get_config = function(opts)
+    --   vim.b.s_index = 0
+    --   if opts.kind == 'codeaction' then
+    --     opts.format_item = function (action)
+    --       vim.b.s_index = vim.b.s_index + 1
+    --
+    --       return vim.b.s_index .. '. ' .. action[2].title
+    --     end
+    --     return {
+    --       backend = 'builtin',
+    --       builtin = {
+    --         anchor = 'NW',
+    --         relative = 'cursor',
+    --         min_height = 1,
+    --       },
+    --     }
+    --   end
+    -- end
   },
 }

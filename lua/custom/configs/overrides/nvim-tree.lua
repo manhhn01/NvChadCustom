@@ -44,7 +44,12 @@ return {
     enable = true,
   },
 
+  view = {
+    width = 40,
+  },
+
   renderer = {
+    root_folder_label = true,
     indent_width = 2,
     indent_markers = {
       enable = true,

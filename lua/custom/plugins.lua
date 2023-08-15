@@ -235,6 +235,7 @@ local plugins = {
       vim.g.codeium_disable_bindings = 1
       vim.g.codeium_filetypes = {
         TelescopePrompt = false,
+        DressingInput = false,
       }
     end,
     event = "BufReadPost",

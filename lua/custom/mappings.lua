@@ -39,7 +39,7 @@ M.general = {
     ["<C-a>"] = { "ggVG", "Select all", opts = { silent = true } },
     ["<Leader>q"] = {
       function()
-        require("nvchad_ui.tabufline").close_buffer()
+        require("nvchad.tabufline").close_buffer()
       end,
       "Close buffer",
     },
@@ -88,7 +88,7 @@ M.tabufline = {
   n = {
     ["<leader>q"] = {
       function()
-        require("nvchad_ui.tabufline").close_buffer()
+        require("nvchad.tabufline").close_buffer()
       end,
       "Close buffer",
     },
