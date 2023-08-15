@@ -200,6 +200,13 @@ local plugins = {
   {
     "mg979/vim-visual-multi",
     event = "BufReadPost",
+    config = function()
+      vim.g.VM_maps['Select Cursor Down'] = "<M-j>"
+      vim.g.VM_maps['Select Cursor Up'] = "<M-k>"
+      vim.g.VM_maps["Undo"] = 'u'
+      vim.g.VM_theme = 'codedark'
+      vim.g.VM_silent_exit = 1
+    end
   },
 
   {

@@ -7,6 +7,13 @@ M.general = {
   },
 
   n = {
+    ["<A-x>"] = {
+      function()
+        require("nvterm.terminal").toggle "horizontal"
+      end,
+      "Toggle horizontal term",
+    },
+
     -- vimdiff
     ["dr"] = { ":diffget RE<CR>", "Diff get remote" },
     ["db"] = { ":diffget BASE<CR>", "Diff get base" },
@@ -60,6 +67,10 @@ M.general = {
 
   x = {
     ["y"] = { "ygv<Esc>", "Preseve yank cursor position", opts = { silent = true } },
+
+    ["x"] = { '"_x', "No yank on cut", opts = { silent = true } },
+    ["d"] = { '"_d', "No yank on delete", opts = { silent = true } },
+    ["c"] = { '"_c', "No yank on change", opts = { silent = true } },
   },
 
   t = {
