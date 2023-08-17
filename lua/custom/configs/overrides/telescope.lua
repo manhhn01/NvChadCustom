@@ -1,7 +1,5 @@
 return {
   defaults = {
-    selection_caret = "  ",
-    entry_prefix = "   ",
     layout_config = {
       vertical = {
         preview_cutoff = 1,
