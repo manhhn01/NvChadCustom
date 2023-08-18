@@ -301,6 +301,14 @@ local plugins = {
   },
 
   {
+    "luckasRanarison/nvim-devdocs",
+    event = "BufReadPost",
+    config = function()
+      require("nvim-devdocs").setup()
+    end,
+  },
+
+  {
     "David-Kunz/jester",
     enabled = false,
     -- config = function()
