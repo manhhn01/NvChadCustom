@@ -21,7 +21,6 @@ M.general = {
 
     ["<C-c>"] = { "<esc>", "Exit insert mode" },
 
-    ["x"] = { '"_x', "No yank on cut", opts = { silent = true } },
     ["d"] = { '"_d', "No yank on delete", opts = { silent = true } },
     ["D"] = { '"_D', "No yank on delete", opts = { silent = true } },
     ["c"] = { '"_c', "No yank on change", opts = { silent = true } },
@@ -68,13 +67,19 @@ M.general = {
   x = {
     ["y"] = { "ygv<Esc>", "Preseve yank cursor position", opts = { silent = true } },
 
-    ["x"] = { '"_x', "No yank on cut", opts = { silent = true } },
     ["d"] = { '"_d', "No yank on delete", opts = { silent = true } },
     ["c"] = { '"_c', "No yank on change", opts = { silent = true } },
+    ["C"] = { '"_C', "No yank on change", opts = { silent = true } },
   },
 
   t = {
     ["<C-[>"] = { vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), "Escape terminal mode" },
+    ["<A-x>"] = {
+      function()
+        require("nvterm.terminal").toggle "horizontal"
+      end,
+      "Toggle horizontal term",
+    },
   },
 }
 
@@ -175,6 +180,7 @@ M.camelcasemotion = {
 
 M.telescope = {
   n = {
+    ["<leader>rr"] = { ":Telescope resume <CR>", "Telescope Resume", opts = { silent = true } },
     ["<leader>gs"] = { ":Telescope git_status <CR>", "Git status", opts = { silent = true } },
     ["<leader>gt"] = { ":Telescope git_stash <CR>", "Git stash", opts = { silent = true } },
     -- find

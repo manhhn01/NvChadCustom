@@ -8,12 +8,12 @@ return {
     enable = false
   },
   symbol_in_winbar = {
-    enable = true,
+    enable = false,
     color_mode = false,
     hide_keyword = true
   },
   implement = {
-    enable = true,
+    enable = false,
     virtual_text = true
   },
   finder = {

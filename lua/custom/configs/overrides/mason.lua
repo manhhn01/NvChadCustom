@@ -10,5 +10,9 @@ return {
     "typescript-language-server",
     "deno",
     "prettier",
+
+    "prisma-language-server",
+
+    "cpell"
   },
 }

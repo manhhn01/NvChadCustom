@@ -19,7 +19,7 @@ opt.listchars:append "multispace:⋅"
 opt.fillchars:append { diff = "╱" }
 
 -- custom close tab
-vim.cmd "function! TbTabCloseCustom(a,b,c,d) \n lua require('custom.utils').del_workspace_name(); require('nvchad_ui.tabufline').closeAllBufs('closeTab') \n endfunction"
+vim.cmd "function! TbTabCloseCustom(a,b,c,d) \n lua require('custom.utils').del_workspace_name(); require('nvchad.tabufline').closeAllBufs('closeTab') \n endfunction"
 
 -- enable undercurl
 vim.cmd [[let &t_Cs = "\e[4:3m"]]
@@ -54,9 +54,3 @@ vim.api.nvim_create_user_command("WQ", "wq", {})
 vim.api.nvim_create_user_command("Q", "q", {})
 vim.api.nvim_create_user_command("Qa", "qa", {})
 vim.api.nvim_create_user_command("QA", "qa", {})
-
-vim.diagnostic.config {
-  float = {
-    source = true,
-  },
-}

@@ -10,6 +10,7 @@ return {
     "c",
     "markdown",
     "markdown_inline",
+    "prisma"
   },
   indent = {
     enable = true,
@@ -19,7 +20,8 @@ return {
   },
 
   autotag = {
-    enable = true
+    enable = true,
+    enable_close_on_slash = false,
   },
 
   context_commentstring = {

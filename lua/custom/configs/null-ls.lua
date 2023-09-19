@@ -5,27 +5,47 @@ if not present then
 end
 
 local b = null_ls.builtins
+local severity = vim.diagnostic.severity
 
 local sources = {
 
   -- webdev stuff
   -- b.formatting.deno_fmt, -- choosed deno for ts/js files cuz its very fast!
-  b.formatting.prettier.with { filetypes = { "javascript", "typescript", "html", "markdown", "css" } }, -- so prettier works only on these filetypes
+  b.formatting.prettier.with { filetypes = { "javascript", "typescript", "html", "markdown", "css", "json" } },
 
-  b.diagnostics.eslint_d.with({
+  b.diagnostics.eslint_d.with {
     prefer_local = "node_modules/.bin",
-    -- disabled_filetypes = shared.default_filetype_deny,
-  }),
-  b.code_actions.eslint_d.with({
+  },
+  b.code_actions.eslint_d.with {
     prefer_local = "node_modules/.bin",
-    -- disabled_filetypes = shared.default_filetype_deny,
-  }),
+  },
+
+  b.diagnostics.cspell.with {
+    disabled_filetypes = {
+      "fugitive",
+      "NvimTree",
+      "dbui",
+      "DressingSelect",
+      "alpha",
+      "Troublel",
+      "DiffviewFiles",
+      "dbui",
+    },
+    diagnostic_config = {
+      underline = true,
+      virtual_text = false,
+      signs = false,
+      update_in_insert = false,
+      severity_sort = true,
+    },
+    diagnostics_postprocess = function(diagnostic)
+      diagnostic.severity = severity.HINT
+    end,
+  },
+  b.code_actions.cspell,
 
   -- Lua
   b.formatting.stylua,
-
-  -- cpp
-  b.formatting.clang_format,
 }
 
 null_ls.setup {

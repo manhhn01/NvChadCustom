@@ -32,7 +32,7 @@ local plugins = {
         "nvim-telescope/telescope-fzf-native.nvim",
         lazy = false,
         build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-        config = function(_)
+        config = function()
           require("telescope").load_extension "fzf"
         end,
       },
@@ -83,6 +83,15 @@ local plugins = {
   },
 
   {
+    "ray-x/lsp_signature.nvim",
+    event = "VeryLazy",
+    opts = require "custom.configs.lsp-signature",
+    config = function(_, opts)
+      require("lsp_signature").setup(opts)
+    end,
+  },
+
+  {
     "rcarriga/nvim-notify",
     opts = require "custom.configs.notify",
     lazy = false,
@@ -130,7 +139,7 @@ local plugins = {
 
   {
     "bkad/CamelCaseMotion",
-    event = "BufReadPost",
+    lazy = false,
   },
 
   {
@@ -201,12 +210,12 @@ local plugins = {
     "mg979/vim-visual-multi",
     event = "BufReadPost",
     config = function()
-      vim.g.VM_maps['Select Cursor Down'] = "<M-j>"
-      vim.g.VM_maps['Select Cursor Up'] = "<M-k>"
-      vim.g.VM_maps["Undo"] = 'u'
-      vim.g.VM_theme = 'codedark'
+      vim.g.VM_maps["Select Cursor Down"] = "<M-j>"
+      vim.g.VM_maps["Select Cursor Up"] = "<M-k>"
+      vim.g.VM_maps["Undo"] = "u"
+      vim.g.VM_theme = "codedark"
       vim.g.VM_silent_exit = 1
-    end
+    end,
   },
 
   {
@@ -253,10 +262,11 @@ local plugins = {
 
   {
     "utilyre/barbecue.nvim",
-    enabled = false,
+    enabled = true,
     event = "BufReadPost",
-    config = function()
-      require("barbecue").setup {}
+    opts = require "custom.configs.barbecue",
+    config = function(_, opts)
+      require("barbecue").setup(opts)
     end,
     dependencies = {
       "SmiteshP/nvim-navic",
@@ -275,7 +285,7 @@ local plugins = {
 
   {
     "folke/todo-comments.nvim",
-    event = "BufReadPost",
+    event = "VeryLazy",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function(_, opts)
       require("todo-comments").setup(opts)
@@ -302,18 +312,39 @@ local plugins = {
 
   {
     "luckasRanarison/nvim-devdocs",
-    event = "BufReadPost",
+    event = "VeryLazy",
     config = function()
       require("nvim-devdocs").setup()
     end,
   },
-
+  {
+    "dgagn/diagflow.nvim",
+    enabled = false,
+    event = "LspAttach",
+    opts = {},
+  },
+  {
+    "VidocqH/lsp-lens.nvim",
+    event = "VeryLazy",
+    opts = require "custom.configs.lsp-lens",
+    config = function(_, opts)
+      require("lsp-lens").setup(opts)
+    end,
+  },
   {
     "David-Kunz/jester",
     enabled = false,
     -- config = function()
     --   require("jester").setup()
     -- end,
+  },
+  {
+    "nvim-zh/colorful-winsep.nvim",
+    event = "WinNew",
+    opts = require "custom.configs.colorful-winsep",
+    config = function(_, opts)
+      require("colorful-winsep").setup(opts)
+    end,
   },
 }
 
