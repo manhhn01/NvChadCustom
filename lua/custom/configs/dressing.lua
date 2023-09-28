@@ -4,10 +4,10 @@ return {
     enabled = true,
 
     -- Default prompt string
-    default_prompt = 'Input:',
+    default_prompt = "Input:",
 
     -- Can be 'left', 'right', or 'center'
-    prompt_align = 'left',
+    prompt_align = "left",
 
     -- When true, <Esc> will close the modal
     insert_only = true,
@@ -15,9 +15,9 @@ return {
     -- When true, input will start in insert mode.
     start_in_insert = true,
 
-    border = 'rounded',
+    border = "rounded",
     -- 'editor' and 'win' will default to being centered
-    relative = 'cursor',
+    relative = "cursor",
 
     -- These can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
     prefer_width = 20,
@@ -31,20 +31,25 @@ return {
       -- Window transparency (0-100)
       winblend = 0,
       -- Change default highlight groups (see :help winhl)
-      winhighlight = 'Normal:FloatBackground',
+      winhighlight = "Normal:FloatBackground",
+
+      list = true,
+      listchars = "precedes:…,extends:…",
+      -- Increase this for more context when text scrolls off the window
+      sidescrolloff = 2,
     },
 
     -- Set to `false` to disable
     mappings = {
       n = {
-        ['<Esc>'] = 'Close',
-        ['<CR>'] = 'Confirm',
+        ["<Esc>"] = "Close",
+        ["<CR>"] = "Confirm",
       },
       i = {
-        ['<C-c>'] = 'Close',
-        ['<CR>'] = 'Confirm',
-        ['<Up>'] = 'HistoryPrev',
-        ['<Down>'] = 'HistoryNext',
+        ["<C-c>"] = "Close",
+        ["<CR>"] = "Confirm",
+        ["<Up>"] = "HistoryPrev",
+        ["<Down>"] = "HistoryNext",
       },
     },
 
@@ -72,16 +77,16 @@ return {
         col = 0,
       },
       size = nil,
-      relative = 'cursor',
+      relative = "cursor",
       border = {
-        style = 'rounded',
+        style = "rounded",
         text = {
-          top_align = 'right',
+          top_align = "right",
         },
       },
       buf_options = {
         swapfile = false,
-        filetype = 'DressingSelect',
+        filetype = "DressingSelect",
       },
       max_width = 80,
       max_height = 40,
@@ -91,15 +96,15 @@ return {
     builtin = {
       -- These are passed to nvim_open_win
       -- anchor = 'NW',
-      border = 'rounded',
+      border = "rounded",
       -- 'editor' and 'win' will default to being centered
-      relative = 'cursor',
+      relative = "cursor",
 
       win_options = {
         -- Window transparency (0-100)
         winblend = 5,
         -- Change default highlight groups (see :help winhl)
-        winhighlight = 'Normal:Normal',
+        winhighlight = "Normal:Normal",
       },
 
       -- These can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
@@ -114,10 +119,10 @@ return {
 
       -- Set to `false` to disable
       mappings = {
-        ['<Esc>'] = 'Close',
-        ['<C-c>'] = 'Close',
-        ['q'] = 'Close',
-        ['<CR>'] = 'Confirm',
+        ["<Esc>"] = "Close",
+        ["<C-c>"] = "Close",
+        ["q"] = "Close",
+        ["<CR>"] = "Confirm",
       },
 
       override = function(conf)

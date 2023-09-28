@@ -1,13 +1,11 @@
 return {
   sections = {
-    -- definition = function(count)
-    --   return "Definitions: " .. count
-    -- end,
+    definition = false,
     references = function(count)
-      return count .. "references"
+      return count .. " references"
     end,
     implements = function(count)
-      return count .. "implements"
+      return count .. " implements"
     end,
   },
 }

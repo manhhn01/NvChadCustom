@@ -346,6 +346,22 @@ local plugins = {
       require("colorful-winsep").setup(opts)
     end,
   },
+  {
+    "akinsho/git-conflict.nvim",
+    event = "BufReadPost",
+    opts = require "custom.configs.git-conflict",
+    init = function(_)
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "GitConflictDetected",
+        callback = function()
+          vim.notify("Conflict detected in " .. vim.fn.expand "<afile>")
+        end,
+      })
+    end,
+    config = function(_, opts)
+      require("git-conflict").setup(opts)
+    end,
+  },
 }
 
 return plugins

@@ -11,7 +11,9 @@ local sources = {
 
   -- webdev stuff
   -- b.formatting.deno_fmt, -- choosed deno for ts/js files cuz its very fast!
-  b.formatting.prettier.with { filetypes = { "javascript", "typescript", "html", "markdown", "css", "json" } },
+  b.formatting.prettier.with {
+    filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact", "html", "markdown", "css", "json" },
+  },
 
   b.diagnostics.eslint_d.with {
     prefer_local = "node_modules/.bin",
