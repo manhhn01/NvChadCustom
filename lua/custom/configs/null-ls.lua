@@ -17,9 +17,15 @@ local sources = {
 
   b.diagnostics.eslint_d.with {
     prefer_local = "node_modules/.bin",
+    cwd = function(params)
+      return require("lspconfig.util").root_pattern "tsconfig.json"(params.bufname)
+    end,
   },
   b.code_actions.eslint_d.with {
     prefer_local = "node_modules/.bin",
+    cwd = function(params)
+      return require("lspconfig.util").root_pattern "tsconfig.json"(params.bufname)
+    end,
   },
 
   b.diagnostics.cspell.with {

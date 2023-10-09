@@ -1,9 +1,3 @@
-vim.diagnostic.config {
-  float = {
-    source = true,
-  },
-}
-
 local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 
@@ -27,4 +21,17 @@ lspconfig.tsserver.setup {
       importModuleSpecifierPreference = "non-relative",
     },
   },
+}
+
+local project_library_path = "/Users/manhnguyen/.nvm/versions/node/v16.17.0/lib/node_modules"
+-- local project_library_path = "./node_modules"
+local cmd = {"ngserver", "--stdio", "--tsProbeLocations", project_library_path , "--ngProbeLocations", project_library_path}
+
+lspconfig.angularls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = cmd,
+  on_new_config = function(new_config, new_root_dir)
+    new_config.cmd = cmd
+  end,
 }

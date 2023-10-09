@@ -240,6 +240,7 @@ local plugins = {
 
   {
     "Exafunction/codeium.vim",
+    enabled = true,
     init = function()
       vim.g.codeium_disable_bindings = 1
       vim.g.codeium_filetypes = {
@@ -362,6 +363,13 @@ local plugins = {
       require("git-conflict").setup(opts)
     end,
   },
+  {
+    "jbyuki/instant.nvim",
+    event = "VeryLazy",
+    init = function (_)
+      vim.g.instant_username = "Mac"
+    end
+  }
 }
 
 return plugins
