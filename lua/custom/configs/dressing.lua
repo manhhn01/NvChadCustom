@@ -36,7 +36,7 @@ return {
       list = true,
       listchars = "precedes:…,extends:…",
       -- Increase this for more context when text scrolls off the window
-      sidescrolloff = 2,
+      sidescrolloff = 5,
     },
 
     -- Set to `false` to disable
@@ -102,9 +102,9 @@ return {
 
       win_options = {
         -- Window transparency (0-100)
-        winblend = 5,
+        winblend = 0,
         -- Change default highlight groups (see :help winhl)
-        winhighlight = "Normal:Normal",
+        winhighlight = "Normal:FloatBackground",
       },
 
       -- These can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)

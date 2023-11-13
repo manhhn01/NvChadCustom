@@ -240,7 +240,7 @@ local plugins = {
 
   {
     "Exafunction/codeium.vim",
-    enabled = true,
+    enabled = false,
     init = function()
       vim.g.codeium_disable_bindings = 1
       vim.g.codeium_filetypes = {
@@ -314,8 +314,9 @@ local plugins = {
   {
     "luckasRanarison/nvim-devdocs",
     event = "VeryLazy",
-    config = function()
-      require("nvim-devdocs").setup()
+    opts = require "custom.configs.devdocs",
+    config = function(_, opts)
+      require("nvim-devdocs").setup(opts)
     end,
   },
   {
@@ -348,27 +349,26 @@ local plugins = {
     end,
   },
   {
-    "akinsho/git-conflict.nvim",
-    event = "BufReadPost",
-    opts = require "custom.configs.git-conflict",
+    "jbyuki/instant.nvim",
+    enabled = false,
+    event = "VeryLazy",
     init = function(_)
-      vim.api.nvim_create_autocmd("User", {
-        pattern = "GitConflictDetected",
-        callback = function()
-          vim.notify("Conflict detected in " .. vim.fn.expand "<afile>")
-        end,
-      })
-    end,
-    config = function(_, opts)
-      require("git-conflict").setup(opts)
+      vim.g.instant_username = "Mac"
     end,
   },
   {
-    "jbyuki/instant.nvim",
-    event = "VeryLazy",
-    init = function (_)
-      vim.g.instant_username = "Mac"
-    end
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    opts = require "custom.configs.copilot",
+    config = function(_, opts)
+      require("copilot").setup(opts)
+    end,
+  },
+  {
+    "elgiano/nvim-treesitter-angular",
+    branch = "topic/jsx-fix",
+    event = "BufReadPost",
   }
 }
 

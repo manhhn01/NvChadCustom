@@ -53,6 +53,18 @@ M.add = {
   FloatBorder = {
     bg = "NONE",
   },
+
+  DiffAdd = {
+    bg = "lightgreen"
+  },
+
+  DiffDelete = {
+    bg = "lightred"
+  },
+
+  DiffChange = {
+    bg = "lightorange"
+  },
 }
 
 return M

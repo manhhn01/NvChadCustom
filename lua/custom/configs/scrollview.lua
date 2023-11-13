@@ -1,7 +1,7 @@
 return {
   excluded_filetypes = { 'NvimTree' },
   current_only = true,
-  winblend = 25,
+  winblend = 0,
   base = 'right',
   column = 1,
   signs_column = 0,

@@ -5,9 +5,9 @@ local M = {}
 local highlights = require "custom.highlights"
 
 M.ui = {
-  theme = "nightfox",
-  theme_toggle = { "everforest", "nightfox" },
-  transparency = false,
+  theme = "everforest",
+  theme_toggle = { "everforest", "everforest" },
+  transparency = true,
 
   hl_override = highlights.override,
   hl_add = highlights.add,
@@ -26,6 +26,7 @@ M.ui = {
 
   tabufline = {
     lazyload = false,
+    show_numbers = true,
     overriden_modules = function(modules)
       modules[3] = (function()
         local result, number_of_tabs = "", vim.fn.tabpagenr "$"
@@ -42,7 +43,7 @@ M.ui = {
         end
 
         local new_tabtn = "%#TblineTabNewBtn#" .. "%@TbNewTab@  %X"
-        local tabstoggleBtn = "%@TbToggleTabs@%#TBTabTitle# WORKSPACE %X"
+        local tabstoggleBtn = "%@TbToggleTabs@%#TBTabTitle# GROUPS %X"
 
         return vim.g.TbTabsToggled == 1 and tabstoggleBtn:gsub("()", { [30] = " " })
           or new_tabtn .. tabstoggleBtn .. result

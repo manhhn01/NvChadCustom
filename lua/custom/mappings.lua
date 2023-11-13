@@ -14,6 +14,30 @@ M.general = {
       "Toggle horizontal term",
     },
 
+    -- close all buf except current
+    ["<leader>pq"] = {
+      function()
+        require("nvchad.tabufline").closeOtherBufs()
+      end,
+      "Close all buffers except current",
+    },
+
+    -- close all right tab
+    ["<leader>lq"] = {
+      function()
+        require("nvchad.tabufline").closeBufs_at_direction("right")
+      end,
+      "Close all buffers right",
+    },
+
+    -- close all right tab
+    ["<leader>hq"] = {
+      function()
+        require("nvchad.tabufline").closeBufs_at_direction("left")
+      end,
+      "Close all buffers left",
+    },
+
     -- vimdiff
     ["dr"] = { ":diffget RE<CR>", "Diff get remote" },
     ["db"] = { ":diffget BASE<CR>", "Diff get base" },
@@ -184,7 +208,7 @@ M.telescope = {
     ["<leader>gs"] = { ":Telescope git_status <CR>", "Git status", opts = { silent = true } },
     ["<leader>gt"] = { ":Telescope git_stash <CR>", "Git stash", opts = { silent = true } },
     -- find
-    ["<leader>o"] = { ":Telescope treesitter <CR>", "Find symbols", opts = { silent = true } },
+    ["<leader>o"] = { ":Telescope lsp_document_symbols	 <CR>", "Find symbols", opts = { silent = true } },
     ["<leader>ff"] = { ":Telescope find_files layout_strategy=vertical <CR>", "Find files", opts = { silent = true } },
     ["<leader>fa"] = {
       ":Telescope find_files follow=true no_ignore=true hidden=true layout_strategy=vertical <CR>",
