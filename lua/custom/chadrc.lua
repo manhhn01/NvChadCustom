@@ -48,7 +48,7 @@ M.ui = {
         return vim.g.TbTabsToggled == 1 and tabstoggleBtn:gsub("()", { [30] = " " })
           or new_tabtn .. tabstoggleBtn .. result
       end)()
-    end
+    end,
   },
 }
 

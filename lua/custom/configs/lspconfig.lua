@@ -23,8 +23,28 @@ lspconfig.tsserver.setup {
   },
 }
 
+local local_node_module = vim.fn.getcwd() .. "/node_modules"
+local language_server = "/Users/markng/.nvm/versions/node/v16.20.2/lib/node_modules"
+local cmd = {
+  "ngserver",
+  "--stdio",
+  "--tsProbeLocations",
+  local_node_module,
+  "--ngProbeLocations",
+  language_server,
+}
+
+lspconfig.angularls.setup {
+  cmd = cmd,
+  on_new_config = function(new_config)
+    new_config.cmd = cmd
+  end,
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
 -- Remove notify on hover
-vim.lsp.handlers['textDocument/hover'] = function(_, result, ctx, config)
+vim.lsp.handlers["textDocument/hover"] = function(_, result, ctx, config)
   config = config or {}
   config.focus_id = ctx.method
   if not (result and result.contents) then
@@ -35,5 +55,5 @@ vim.lsp.handlers['textDocument/hover'] = function(_, result, ctx, config)
   if vim.tbl_isempty(markdown_lines) then
     return
   end
-  return vim.lsp.util.open_floating_preview(markdown_lines, 'markdown', config)
+  return vim.lsp.util.open_floating_preview(markdown_lines, "markdown", config)
 end

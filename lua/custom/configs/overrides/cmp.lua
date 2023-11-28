@@ -42,6 +42,7 @@ return {
       return item
     end,
   },
+
   mapping = cmp.mapping.preset.insert {
     ["<CR>"] = cmp.mapping(function(fallback)
       fallback()

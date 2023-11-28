@@ -109,6 +109,15 @@ local plugins = {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = require "custom.configs.overrides.treesitter",
+    dependencies = {
+      {
+        "nvim-treesitter/nvim-treesitter-context",
+        opts = require "custom.configs.treesitter-context",
+        config = function(_, opts)
+          require("treesitter-context").setup(opts)
+        end,
+      },
+    },
   },
 
   {
@@ -119,6 +128,7 @@ local plugins = {
 
   {
     "lukas-reineke/indent-blankline.nvim",
+    event = "BufReadPost",
     opts = require "custom.configs.overrides.indent-blankline",
   },
 
@@ -369,7 +379,18 @@ local plugins = {
     "elgiano/nvim-treesitter-angular",
     branch = "topic/jsx-fix",
     event = "BufReadPost",
-  }
+  },
+
+  {
+    "j-hui/fidget.nvim",
+    enabled = false,
+    opts = {
+      progress = {
+        ignore_done_already = true,
+      },
+    },
+    event = "VeryLazy",
+  },
 }
 
 return plugins

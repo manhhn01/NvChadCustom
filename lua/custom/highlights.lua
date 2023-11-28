@@ -9,6 +9,22 @@ M.override = {
   Comment = {
     italic = true,
   },
+
+  DiffAdd = {
+    bg = "lightgreen",
+  },
+
+  DiffDelete = {
+    bg = "lightred",
+  },
+
+  DiffChange = {
+    bg = "lightorange",
+  },
+
+  CmpDoc = {
+    bg = "NONE",
+  },
 }
 
 ---@type HLTable
@@ -54,16 +70,9 @@ M.add = {
     bg = "NONE",
   },
 
-  DiffAdd = {
-    bg = "lightgreen"
-  },
-
-  DiffDelete = {
-    bg = "lightred"
-  },
-
-  DiffChange = {
-    bg = "lightorange"
+  -- Context separator
+  TreesitterContextSeparator = {
+    fg = "#525a60",
   },
 }
 
