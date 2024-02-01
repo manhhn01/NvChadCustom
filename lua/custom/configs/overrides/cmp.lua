@@ -11,6 +11,8 @@ local field_arrangement = {
   atom_colored = { "kind", "abbr", "menu" },
 }
 
+local max_width = 50
+
 return {
   formatting = {
 
@@ -20,6 +22,8 @@ return {
     format = function(entry, item)
       local icons = require "nvchad.icons.lspkind"
       local icon = (cmp_ui.icons and icons[item.kind]) or ""
+
+      item.abbr = item.abbr:len() > max_width and item.abbr:sub(1, max_width - 1) .. "…" or item.abbr
 
       if cmp_style == "atom" or cmp_style == "atom_colored" then
         icon = " " .. icon .. " "

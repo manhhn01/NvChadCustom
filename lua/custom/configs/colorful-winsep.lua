@@ -2,14 +2,14 @@ return {
   -- highlight for Window separator
   highlight = {
     -- bg = "#16161E",
-    fg = "#7393B3",
+    fg = "#40486a",
   },
   -- timer refresh rate
-  interval = 30,
+  interval = 45,
   -- This plugin will not be activated for filetype in the following table.
   no_exec_files = { "packer", "TelescopePrompt", "mason", "CompetiTest", "NvimTree" },
   -- Symbols for separator lines, the order: horizontal, vertical, top left, top right, bottom left, bottom right.
-  symbols = { "━", "┃", "┏", "┓", "┗", "┛" },
+  symbols = { "─", "│", "┌", "┐", "└", "┘" },
   close_event = function()
     -- Executed after closing the window separator
   end,

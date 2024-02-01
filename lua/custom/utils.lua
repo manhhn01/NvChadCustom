@@ -1,28 +1,48 @@
 local M = {}
 
-M.set_workspace_name = function()
-  local tab_names = vim.g.tab_names or {}
-  local tab_i = "" .. vim.fn.tabpagenr()
-
-  local name = vim.fn.input "Enter workspace name: "
-  if name == "" then
-    return
+M.contains = function(list, x)
+  for _, v in pairs(list) do
+    if v == x then
+      return true
+    end
   end
-
-  tab_names[tab_i] = name
-  vim.g.tab_names = tab_names
-
-  vim.cmd "redrawtabline"
+  return false
 end
 
-M.del_workspace_name = function()
-  local tab_names = vim.g.tab_names or {}
-  local tab_i = "" .. vim.fn.tabpagenr()
+M.has_file = function(dir_path, file_names, depth)
+  local uv = vim.loop
 
-  tab_names[tab_i] = nil
-  vim.g.tab_names = tab_names
+  if depth < 0 then
+    return false
+  end
 
-  vim.cmd "redrawtabline"
+  local scanner, err = uv.fs_scandir(dir_path)
+  if err then
+    print("Cannot open directory: ", err)
+    return false
+  end
+
+  while true do
+    local name, typ = uv.fs_scandir_next(scanner)
+    if name == nil then
+      break
+    end
+
+    if typ == "file" and M.contains(file_names, name) then
+      return true
+    elseif typ == "directory" then
+      if name == "node_modules" then
+        return false
+      end
+
+      local found = M.has_file(dir_path .. "/" .. name, file_names, depth - 1)
+      if found then
+        return true
+      end
+    end
+  end
+
+  return false
 end
 
 return M

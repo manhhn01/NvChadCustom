@@ -60,3 +60,14 @@ vim.diagnostic.config {
     source = true,
   },
 }
+
+if vim.g.neovide then
+  vim.o.guifont = "JetBrainsMonoNL Nerd Font:h14"
+  vim.g.neovide_input_use_logo = true
+  vim.g.neovide_input_macos_alt_is_meta = true
+  vim.api.nvim_set_keymap('', '<D-v>', '+p<CR>', { noremap = true, silent = true})
+  vim.api.nvim_set_keymap('!', '<D-v>', '<C-R>+', { noremap = true, silent = true})
+  vim.api.nvim_set_keymap('t', '<D-v>', '<C-R>+', { noremap = true, silent = true})
+  vim.api.nvim_set_keymap('v', '<D-v>', '<C-R>+', { noremap = true, silent = true})
+  vim.g.neovide_floating_shadow = false
+end

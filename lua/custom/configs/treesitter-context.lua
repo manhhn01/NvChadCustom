@@ -1,4 +1,4 @@
 return {
-  max_lines = 3,
-  separator = '─'
+  -- max_lines = 3,
+  mode = 'topline'
 }

@@ -18,7 +18,7 @@ lspconfig.tsserver.setup {
   capabilities = capabilities,
   init_options = {
     preferences = {
-      importModuleSpecifierPreference = "non-relative",
+      importModuleSpecifierPreference = "shortest",
     },
   },
 }

@@ -236,6 +236,10 @@ local plugins = {
     end,
     dependencies = {
       "JoosepAlviste/nvim-ts-context-commentstring",
+      opts = {},
+      config = function(_, opts)
+        require("ts_context_commentstring").setup(opts)
+      end,
     },
   },
 
@@ -263,7 +267,11 @@ local plugins = {
 
   {
     "tpope/vim-fugitive",
-    cmd = { "Git", "G" },
+    event = "VeryLazy",
+    dependencies = {
+      "tpope/vim-rhubarb",
+      "shumphrey/fugitive-gitlab.vim"
+    }
   },
 
   {
@@ -277,7 +285,9 @@ local plugins = {
     event = "BufReadPost",
     opts = require "custom.configs.barbecue",
     config = function(_, opts)
-      require("barbecue").setup(opts)
+      if not vim.g.neovide then
+        require("barbecue").setup(opts)
+      end
     end,
     dependencies = {
       "SmiteshP/nvim-navic",
@@ -391,6 +401,45 @@ local plugins = {
     },
     event = "VeryLazy",
   },
+
+  {
+    "nvim-pack/nvim-spectre",
+    event = "VeryLazy",
+    config = function(_, opts)
+      require("spectre").setup()
+    end,
+  },
+
+  {
+    "echasnovski/mini.indentscope",
+    event = "VeryLazy",
+    opts = require "custom.configs.indentscope",
+    init = function()
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "NvimTree",
+        callback = function()
+          vim.b.miniindentscope_disable = true
+        end,
+      })
+    end,
+    config = function(_, opts)
+      require("mini.indentscope").setup(opts)
+    end,
+  },
+
+  {
+    "b0o/incline.nvim",
+    event="BufReadPost",
+    opts = require "custom.configs.incline",
+    config = function(_, opts)
+      require("incline").setup(opts)
+    end,
+  },
+
+  {
+    "davidmh/cspell.nvim",
+    event = "BufReadPost",
+  }
 }
 
 return plugins

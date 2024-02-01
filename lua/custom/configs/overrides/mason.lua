@@ -12,7 +12,5 @@ return {
     "prettier",
 
     "prisma-language-server",
-
-    "cpell"
   },
 }

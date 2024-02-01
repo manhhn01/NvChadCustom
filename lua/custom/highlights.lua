@@ -22,9 +22,10 @@ M.override = {
     bg = "lightorange",
   },
 
-  CmpDoc = {
-    bg = "NONE",
-  },
+  -- For transparent background
+  -- CmpDoc = {
+  --   bg = "NONE",
+  -- },
 }
 
 ---@type HLTable
@@ -66,14 +67,19 @@ M.add = {
   },
 
   -- Float
-  FloatBorder = {
-    bg = "NONE",
-  },
+  -- FloatBorder = {
+  --   bg = "NONE",
+  -- },
 
   -- Context separator
   TreesitterContextSeparator = {
     fg = "#525a60",
   },
+
+  TreesitterContextBottom = {
+    underline = true,
+    sp = "#2b2940",
+  }
 }
 
 return M

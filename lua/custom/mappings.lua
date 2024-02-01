@@ -3,10 +3,21 @@ local M = {}
 
 M.general = {
   i = {
-    ["<c-a>"] = { "ggVG", "Select all", opts = { silent = true } },
+    ["<c-a>"] = { "<Esc>ggVG", "Select all", opts = { silent = true } },
   },
 
   n = {
+    -- dev docs
+    ["<leader>dd"] = {
+      ":DevdocsOpenFloat<CR>",
+      "Open devdocs",
+    },
+
+    ["<leader>gh"] = {
+      ":0Gllog<CR>",
+      "Open file git history",
+    },
+
     ["<A-x>"] = {
       function()
         require("nvterm.terminal").toggle "horizontal"
@@ -49,6 +60,7 @@ M.general = {
     ["D"] = { '"_D', "No yank on delete", opts = { silent = true } },
     ["c"] = { '"_c', "No yank on change", opts = { silent = true } },
     ["C"] = { '"_C', "No yank on change", opts = { silent = true } },
+    ["x"] = { '"_x', "No yank on delete", opts = { silent = true } },
 
     ["zw"] = { ":set wrap!<CR>", "Wrap toggle", opts = { silent = true } },
 
@@ -66,7 +78,6 @@ M.general = {
       end,
       "Close buffer",
     },
-    ["<leader>n"] = { require("custom.utils").set_workspace_name, "Set workspace name" },
     ["<leader><space>"] = { ":noh<CR>", "No Highlight" },
     ["ss"] = { ":split<CR>", "Split horizontal", opts = { silent = true } },
     ["sv"] = { ":vsplit<CR>", "Split vertical", opts = { silent = true } },
@@ -252,7 +263,7 @@ M.gitsigns = {
 
     ["<space><space>"] = {
       function()
-        require("gitsigns").preview_hunk_inline()
+        require("gitsigns").preview_hunk()
       end,
       "Preview hunk",
     },
